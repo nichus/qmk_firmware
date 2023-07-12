@@ -24,7 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * to repeating that information all over the place.
  */
 
-#include QMK_KEYBOARD_H
+#include "matrix.h"
+#include "debug.h"
+#include "wait.h"
 #include "i2c_master.h"
 
 extern i2c_status_t tca9555_status;
@@ -34,7 +36,7 @@ extern i2c_status_t tca9555_status;
 // All address pins of the tca9555 are connected to the ground
 // | 0  | 1  | 0  | 0  | A2 | A1 | A0 |
 // | 0  | 1  | 0  | 0  | 0  | 0  | 0  |
-#define I2C_ADDR 0b0100000
+#define I2C_ADDR (0b0100000 << 1)
 
 // Register addresses
 #define IODIRA 0x06  // i/o direction register
